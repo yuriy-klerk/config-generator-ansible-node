@@ -1,0 +1,23 @@
+{
+  "name": "config-generator-ansible-node",
+  "author": "yuriy-klerk",
+  "version": "1.0.0-alpha",
+  "scripts": {
+    "build": "tsc --skipLibCheck",
+    "start": "tsc --skipLibCheck && node ./build/index.js",
+    "watch": "tsc -w"
+  },
+  "description": "config-generator-ansible-node is a TypeScript library for generating configuration and secure delivery using ansible for any of your services like nginx or mysql from your NodeJS application.",
+  "repository": "https://github.com/yuriy-klerk/config-generator-ansible-node",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "fs": "^0.0.1-security",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.161",
+    "@types/node": "^14.11.5",
+    "typescript": "^4.0.3"
+  }
+}

@@ -1,0 +1,8 @@
+import ConfigGenerator from '../index';
+
+const ConfigGeneratorHandler: ConfigGenerator = new ConfigGenerator();
+ConfigGeneratorHandler.generate('/Users/user/Desktop/sls.conf', {'PORT': 3000}, '/etc/sls.conf').then(() => {
+    console.log('Awesome :)');
+}).catch(() => {
+    console.log('Something went wrong...');
+});
