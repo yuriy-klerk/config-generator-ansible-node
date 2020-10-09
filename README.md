@@ -5,11 +5,11 @@
 ### Step 1. Installing config-generator-ansible-node
 
 ```shell script
-npm i --save 
+npm i config-generator-ansible-node --save 
 ```
 
 ```typescript
-import ConfigGenerator from 'config-generator'; 
+import ConfigGenerator from 'config-generator-ansible-node'; 
 ```
 
 ### Step 2. Installing Ansible
@@ -23,7 +23,7 @@ Please see the ansible documentation:
 
 ### Usage
 ```typescript
-const ConfigGeneratorHandler: ConfigGenerator = new ConfigGenerator();
+const ConfigGeneratorHandler = new ConfigGenerator();
 ConfigGeneratorHandler.generate('/Users/user/Desktop/sls.conf', {'PORT': 3000}, '/etc/sls.conf').then(() => {
     console.log('Awesome :)');
 }).catch(() => {
