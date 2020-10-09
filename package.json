@@ -1,7 +1,7 @@
 {
   "name": "config-generator-ansible-node",
   "author": "yuriy-klerk",
-  "version": "1.0.0-alpha-2",
+  "version": "1.0.0-alpha-3",
   "scripts": {
     "build": "tsc --skipLibCheck",
     "start": "tsc --skipLibCheck && node ./build/index.js",

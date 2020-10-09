@@ -37,6 +37,6 @@ ConfigGeneratorHandler.generate('/Users/user/Desktop/sls.conf', {'PORT': 3000}, 
 [![Alt text](https://callaba.io/img/logo-black.svg)](https://callaba.io/)
 
 
-##№ License
+### License
 
 [Apache License 2.0](https://github.com/yuriy-klerk/config-generator-ansible-node/blob/main/LICENSE)
