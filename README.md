@@ -24,7 +24,7 @@ Please see the ansible documentation:
 ### Usage
 ```typescript
 const ConfigGeneratorHandler = new ConfigGenerator();
-ConfigGeneratorHandler.generate('/Users/user/Desktop/sls.conf', {'PORT': 3000}, '/etc/sls.conf').then(() => {
+ConfigGeneratorHandler.generate('/tmp/YOUR-SERVICE.conf', {'PORT': 3000}, '/etc/YOUR-SERVICE.conf').then(() => {
     console.log('Awesome :)');
 }).catch(() => {
     console.log('Something went wrong...');
