@@ -1,11 +1,13 @@
 {
   "name": "config-generator-ansible-node",
   "author": "yuriy-klerk",
-  "version": "1.0.0-alpha-5",
+  "version": "1.0.0-alpha-6",
+  "main": "build/index.js",
   "scripts": {
     "build": "tsc --skipLibCheck",
     "start": "tsc --skipLibCheck && node ./build/index.js",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "prepare" : "npm run build"
   },
   "keywords": ["config generator node", "ansible config node", "nodejs generate config nginx", "config generator"],
   "description": "config-generator-ansible-node is a TypeScript library for generating configuration and secure delivery using ansible for any of your services like nginx or mysql from your NodeJS application.",
@@ -20,5 +22,6 @@
     "@types/lodash": "^4.14.161",
     "@types/node": "^14.11.5",
     "typescript": "^4.0.3"
-  }
+  },
+  "files": ["build/**/*"]
 }
