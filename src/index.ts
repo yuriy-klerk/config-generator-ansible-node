@@ -55,6 +55,18 @@ class ConfigGenerator {
             });
         });
     };
+
+    compile(sourcePath: string, options: object): Promise<string> {
+        return new Promise((resolve: any, reject: any) => {
+            fileStreamHandler.read(sourcePath).then((configData: string) => {
+                const TemplateHandler = new Template();
+                const compiledTemplate: string = TemplateHandler.compile(configData, options);
+                resolve(compiledTemplate);
+            }).catch(() => {
+                reject();
+            });
+        });
+    }
 }
 
 export default ConfigGenerator;

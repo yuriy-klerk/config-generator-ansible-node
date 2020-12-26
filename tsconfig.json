@@ -6,7 +6,7 @@
     "sourceMap": true
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*", "./src/examples"
   ],
   "exclude": [
     "node_modules"
