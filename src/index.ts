@@ -16,14 +16,34 @@ const fileStreamHandler: FS = new FS();
 /**
  * @interface ConfigGenerator
  */
-interface ConfigGenerator {
+interface IConfigGenerator {
+    /**
+     *
+     * @param sourcePath
+     * @param options
+     * @param destinationPath
+     */
     generate(sourcePath: string, options: object, destinationPath: string): Promise<void>;
+
+    /**
+     *
+     * @param sourcePath
+     * @param options
+     */
+    compile(sourcePath: string, options: object): Promise<string>;
+
+    /**
+     *
+     * @param destinationPath
+     * @param configData
+     */
+    write(destinationPath: string, configData: string): Promise<boolean>;
 }
 
 /**
  * @class ConfigGenerator
  */
-class ConfigGenerator {
+class ConfigGenerator implements IConfigGenerator {
 
 
     /**
@@ -44,30 +64,54 @@ class ConfigGenerator {
             fileStreamHandler.read(sourcePath).then((configData: string) => {
                 const TemplateHandler = new Template();
                 const compiledTemplate: string = TemplateHandler.compile(configData, options);
-                fileStreamHandler.write(destinationPath, compiledTemplate).then(() => {
+                fileStreamHandler.delivery(destinationPath, compiledTemplate).then(() => {
                     resolve();
-                }).catch(() => {
+                }).catch((e) => {
+                    console.error(e);
                     reject();
                 });
 
-            }).catch(() => {
+            }).catch((e) => {
+                console.error(e);
                 reject();
             });
         });
     };
 
+    /**
+     *
+     * @param sourcePath
+     * @param options
+     */
     compile(sourcePath: string, options: object): Promise<string> {
         return new Promise((resolve: any, reject: any) => {
             fileStreamHandler.read(sourcePath).then((configData: string) => {
                 const TemplateHandler = new Template();
                 const compiledTemplate: string = TemplateHandler.compile(configData, options);
                 resolve(compiledTemplate);
-            }).catch(() => {
+            }).catch((e) => {
+                console.error(e);
                 reject();
             });
         });
     }
+
+    /**
+     *
+     * @param destinationPath
+     * @param configData
+     */
+    write(destinationPath: string, configData: string): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            return fileStreamHandler.write(destinationPath, configData).then((isSuccess) => {
+                resolve(isSuccess);
+            }).catch((e) => {
+                console.error(e);
+                reject(false)
+            })
+        });
+    }
+
 }
 
 export default ConfigGenerator;
-

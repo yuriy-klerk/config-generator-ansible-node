@@ -1,4 +1,4 @@
-import {readFile} from 'fs';
+import {readFile, writeFile} from 'fs';
 import * as child_process from 'child_process';
 /**
  * @interface FS
@@ -15,7 +15,14 @@ interface FS {
      * @param destinationPath
      * @param configData
      */
-    write(destinationPath: string, configData: string): Promise<void>;
+    delivery(destinationPath: string, configData: string): Promise<void>;
+
+    /**
+     *
+     * @param destinationPath
+     */
+    write(destinationPath: string, configData: string): Promise<any>;
+
 }
 
 /**
@@ -44,7 +51,7 @@ class FS {
      * @param pathFolder
      * @param configData
      */
-    write(destinationPath: string, configData: string): Promise<void> {
+    delivery(destinationPath: string, configData: string): Promise<void> {
         return new Promise((resolve: any, reject: any): any => {
             const writeCommand: string = `ansible localhost -m shell -a "sudo touch ${destinationPath} && echo '${configData}' > ${destinationPath}" -b`;
             child_process.exec(writeCommand, (err) => {
@@ -56,6 +63,18 @@ class FS {
 
                 }
             });
+        });
+    }
+
+    write(destinationPath: string, configData: string): Promise<any> {
+        return new Promise((resolve: any, reject: any): any => {
+            try {
+                writeFile(destinationPath, configData, () => {
+                    resolve(true);
+                });
+            } catch (e) {
+                reject(e)
+            }
         });
     }
 }

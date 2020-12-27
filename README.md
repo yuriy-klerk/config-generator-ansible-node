@@ -30,8 +30,15 @@ ConfigGeneratorHandler.generate('/tmp/YOUR-SERVICE.conf', {'PORT': 3000}, '/etc/
     console.log('Something went wrong...');
 });
 ```
-### Products that use Config-generator-ansible-node
+### Methods
+```typescript
+1. generate(sourcePath: string, options: object, destinationPath: string): Promise<void>;
+2. compile(sourcePath: string, options: object): Promise<string>;
+3. write(destinationPath: string, configData: string): Promise<boolean>;
+```
 
+
+### Products that use Config-generator-ansible-node
 
 
 [![Alt text](https://callaba.io/img/logo-black.svg)](https://callaba.io/)
